@@ -1,6 +1,5 @@
 package pl.edu.pwr.wiz.wzorlaboratorium9;
 
-
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -78,6 +77,53 @@ public class MainActivityTest {
                                 4),
                         isDisplayed()));
         textView.check(matches(withText("Wynik: -30.0")));
+
+    }
+
+    @Test
+    public void mainActivitySumTest() {
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.values),
+                        withParent(allOf(withId(R.id.activity_main),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        appCompatEditText.perform(click());
+
+        ViewInteraction appCompatEditText2 = onView(
+                allOf(withId(R.id.values),
+                        withParent(allOf(withId(R.id.activity_main),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        appCompatEditText2.perform(replaceText("1,2,3"), closeSoftKeyboard());
+
+        ViewInteraction appCompatSpinner = onView(
+                allOf(withId(R.id.operation),
+                        withParent(allOf(withId(R.id.activity_main),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        appCompatSpinner.perform(click());
+
+        ViewInteraction appCompatTextView = onView(
+                allOf(withId(android.R.id.text1), withText("Dodawanie"), isDisplayed()));
+        appCompatTextView.perform(click());
+
+        ViewInteraction appCompatButton = onView(
+                allOf(withId(R.id.btn_calculate), withText("Oblicz"),
+                        withParent(allOf(withId(R.id.activity_main),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        appCompatButton.perform(click());
+
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.result), withText("Wynik: 6.0"),
+                        childAtPosition(
+                                allOf(withId(R.id.activity_main),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                4),
+                        isDisplayed()));
+        textView.check(matches(withText("Wynik: 6.0")));
 
     }
 

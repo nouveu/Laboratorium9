@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
             case    2       :       result = ac.getMultiplied();
                                     break;
             /* TODO - dodać brakujące operacje */
+            case    3       :       result = ac.getAverage();
+                                    break;
+            case    4       :       result = ac.getSmallest();
+                                    break;
+            case    5       :       result = Float.valueOf(ac.getSize());
+                                    break;
             default         :
             case    0       :       Toast.makeText(this, getString(R.string.select_op), Toast.LENGTH_LONG).show();
                                     return;

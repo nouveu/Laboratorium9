@@ -47,12 +47,25 @@ public class ArrayCalculator {
     /* Ilość elementów */
     public Integer getSize() {
         /* TODO - zwracać ilość elementów */
-        return 0;
+        return array.length;
     }
 
     /* Srednia */
     public Float getAverage() {
         /* TODO - zwracać srednia */
-        return Float.valueOf(0);
+        return getSum()/getSize();
+    }
+
+    public Float getSmallest() {
+
+        Float min = array[0];
+
+        for (Float element : array) {
+            if (element < min) {
+                min = element;
+            }
+        }
+
+        return min;
     }
 }

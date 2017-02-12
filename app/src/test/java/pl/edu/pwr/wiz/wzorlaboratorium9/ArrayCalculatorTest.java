@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
  */
 public class ArrayCalculatorTest {
     private ArrayCalculator ac;
+
     private String string;
 
     @Before
@@ -18,7 +19,6 @@ public class ArrayCalculatorTest {
          * np. przygotować dane, połączenie z bazą itd.
          */
     }
-
     @Test
     public void getArray() throws Exception {
         /* Testy konstuktora - tego czy prawidłowo parsuje dane */
@@ -72,7 +72,20 @@ public class ArrayCalculatorTest {
     @Test
     public void getMultiplied() throws Exception {
         /* Todo napisać testy do funkcji multipled */
-        assertEquals(true, false);
+         /* Prosty przypadek */
+        string = "1,2,3";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(6.0), ac.getMultiplied());
+
+        /* Liczby ujemne  */
+        string = "1,-2,3";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(-6.0), ac.getMultiplied());
+
+        /* Liczby ujemne + ułamki  */
+        string = "1.5,-2,3";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(-9.0), ac.getMultiplied());
     }
 
     @Test
@@ -91,4 +104,41 @@ public class ArrayCalculatorTest {
     }
 
     /* TODO napisać test do funkcji getAvarage */
+    @Test
+    public void getAverage() throws Exception {
+        /* Prosty przypadek */
+        string = "1,3,5";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(3), ac.getAverage());
+
+        /* Liczby ujemne */
+        string = "-1,3,4";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(2), ac.getAverage());
+
+        /* Liczby ujemne + ułamki */
+        string = "2.5,-1,7.5";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(3), ac.getAverage());
+
+    }
+
+    @Test
+    public void getSmallest() throws Exception {
+        /* Prosty przypadek */
+        string = "4,0,3,5";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(0), ac.getSmallest());
+
+        /* Liczby ujemne */
+        string = "4,0,-3,5";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(-3), ac.getSmallest());
+
+        /* Liczby ujemne + ułamki */
+        string = "4,0,-3.5,5";
+        ac = new ArrayCalculator(string);
+        assertEquals(new Float(-3.5), ac.getSmallest());
+    }
+
 }
