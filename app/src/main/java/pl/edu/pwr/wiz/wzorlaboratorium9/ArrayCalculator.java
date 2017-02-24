@@ -1,7 +1,7 @@
 package pl.edu.pwr.wiz.wzorlaboratorium9;
 
 /**
- * Kalkulator  dla danych przesyłanych w postaci listy liczb
+ * Kalkulator    dla danych przesyłanych w postaci listy liczb
  */
 
 public class ArrayCalculator {
